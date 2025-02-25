@@ -1,0 +1,42 @@
+<CFE xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" 
+xmlns="http://cfe.dgi.gub.uy">
+ <eFact>
+ <Encabezado>
+ <IdDoc>
+   <TipoCFE>111</TipoCFE>
+   <FchEmis>2021-09-22</FchEmis>
+   <FmaPago>2</FmaPago> 
+ </IdDoc>
+ <Emisor>
+   <RUCEmisor>100732340019</RUCEmisor> 
+   <RznSoc>pypSA</RznSoc>
+   <CdgDGISucur>2</CdgDGISucur>
+   <DomFiscal>Calle 1234</DomFiscal>
+   <Ciudad>Maldonado</Ciudad> 
+   <Departamento>Maldonado</Departamento>
+ </Emisor>
+ <Receptor>
+ <TipoDocRecep>2</TipoDocRecep>
+ <CodPaisRecep>UY</CodPaisRecep>
+ <DocRecep>217445990012</DocRecep>
+ <RznSocRecep>Cliente</RznSocRecep>
+ <DirRecep>Calle 4321</DirRecep>
+ <CiudadRecep>Montevideo</CiudadRecep>
+ </Receptor>
+ <Totales> 
+    <TpoMoneda>USD</TpoMoneda>
+    <TpoCambio>42.00</TpoCambio>
+    <MntNoGrv>1500.000</MntNoGrv>
+	<MntNetoIVATasaBasica>0.000</MntNetoIVATasaBasica>
+	<IVATasaBasica>22.000</IVATasaBasica>	
+	<MntIVATasaBasica>0.000</MntIVATasaBasica>	
+    <MntTotal>1500.00</MntTotal>
+    <CantLinDet>1</CantLinDet>
+    <MntPagar>1500.00</MntPagar> 
+ </Totales>
+  </Encabezado>
+ <Detalle>
+ </Detalle>
+ </eFact>
+</CFE>

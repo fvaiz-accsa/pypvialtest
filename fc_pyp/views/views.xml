@@ -1,0 +1,503 @@
+<odoo>
+  <data>
+         <record id="view_res_partner_form" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                  <xpath expr="//field[@name='vat']" position="before">
+                    <field name="x_tipoDoc"/>
+                  </xpath>
+            </field>
+        </record>
+
+        <record id="view_account_move_form" model="ir.ui.view">
+            <field name="name">account.move.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_reference']" position="before">
+                    <label for="tipoDoc" string="Documento" />
+                    <div class="div_tipoDoc">
+                            <field name="tipoDoc" readonly="1"/>
+                             <span> : </span>
+                            <field name="customerRUT" readonly="1"/>
+                    </div>
+                    <field name="tipoCFE" attrs="{'invisible': ['|', ('move_type', '!=', 'out_invoice'), ('move_type', '=', 'in_refund')], 'readonly': [('state', '!=', 'draft')]}"/>
+                    <field name="tipoCFE_FC_NC" attrs="{'invisible': [('move_type', '!=', 'out_refund')], 'readonly': [('state', '!=', 'draft')]}"/>
+                   <field name="formaPago" attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund'))], 'readonly': [('state', '!=', 'draft')]}" />
+                   </xpath>
+                <xpath expr="//div[@name='journal_div']" position="after">
+                    <field name="mensaje_USD" readonly="1" attrs="{'invisible': [('currency_id', '!=', 2)]}"/>
+                    <field name="Uuid" attrs="{'invisible': [('Uuid', '==', False)], 'readonly': [('Uuid', '!=', False)]}"/>
+                    <field name="feEstado" attrs="{'invisible': [('Uuid', '==', False)], 'readonly': [('Uuid', '!=', False)]}"/>
+                    <field name="cfe_serieNumero"  attrs="{'invisible': [('Uuid', '==', False)], 'readonly': [('Uuid', '!=', False)]}"/>
+                    <field name="talon_Fisico" attrs="{'invisible': [('move_type','in',('out_invoice','out_refund','out_receipt','entry'))]}"/>
+                    <field name="matricula" attrs="{'invisible': [('move_type','in',('out_invoice','out_refund','out_receipt','entry'))]}"/>
+                    <field name="km" attrs="{'invisible': [('move_type','in',('out_invoice','out_refund','out_receipt','entry'))]}"/>
+                    <field name="funcionario" attrs="{'invisible': [('move_type','in',('out_invoice','out_refund','out_receipt','entry'))]}"/>
+
+                </xpath>
+                <xpath expr="//page[@name='other_info']" position='after'>
+                    <page id="fac_elec_tab" string="Facturación Electrónica" attrs="{'invisible': [('Uuid', '==', False)]}">
+                        <group id="other_tab_group">
+                         <group id="fac_elec_tab_group">
+                           <field name="Number" readonly="1" invisible="1"/>
+                           <field name="RtaMessage" readonly="1"  invisible="1"/>
+                           <field name="RtaCode" readonly="1"  invisible="1"/>
+                        </group>
+                       <group id="fac_elec_tab2_group">
+                         <field name="Series" readonly="1"  invisible="1"/>
+                           <button name="getPDF" string="Obtener PDF" type="object"  invisible="1"/>
+                       </group>
+                       </group>
+                        <group id="fac_elec_tab3_group">
+                              <field name="cfe_emitidas" readonly="1"/>
+                              <field name="xmlText" readonly="1" invisible="1"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+          <record id="view_fc_pyp_settings_fc_form" model="ir.ui.view">
+            <field name="name">view.fc_pyp.settings_fc.form</field>
+            <field name="model">fc_pyp.settings_fc</field>
+            <field name="arch" type="xml">
+                <form string="Configuracion">
+                    <sheet>
+                        <group name="group_top">
+                            <group name="group_left">
+                                <field name="url"/>
+                                <field name="usuario"/>
+                                <field name="clave"/>
+                            </group>
+                            <group name="group_right">
+                                <field name="comercio"/>
+                                <field name="terminal"/>
+                                <field name="timeout"/>
+                                <field name="activo"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+      <record id="action_fc_pyp_settings_fc_view" model="ir.actions.act_window">
+            <field name="name">Cheque</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fc_pyp.settings_fc</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Facturacion Electronica
+                </p>
+                <p>
+                    Click 'Nuevo' para añadir nuevos elementos
+                </p>
+            </field>
+        </record>
+
+       <record id="view_fc_pyp_settings_fc_tree" model="ir.ui.view">
+            <field name="name">view.fc_pyp.settings_fc.tree</field>
+            <field name="model">fc_pyp.settings_fc</field>
+            <field name="arch" type="xml">
+                <tree string="Configuracion">
+                                <field name="activo"/>
+                                <field name="url"/>
+                                <field name="comercio"/>
+                                <field name="terminal"/>
+                                <field name="usuario"/>
+                                <field name="clave"/>
+                </tree>
+            </field>
+        </record>
+
+<!--        <menuitem id="menu_fc_pyp_settings_fc_root" name="F_elec" sequence="10"/>-->
+
+        <menuitem id="menu_fc_pyp_settings_fc_categ" name="FE Memory" parent="base.menu_custom" sequence="0"/>
+
+        <menuitem id="menu_fc_pyp_settings_fc" name="Configuración" parent="menu_fc_pyp_settings_fc_categ" sequence="0"
+                  action="action_fc_pyp_settings_fc_view"/>
+
+<!--base.menu_administration    base.menu_custom" -->
+<!--        <menuitem id="facturacion_electronica" name="Facturacion_Electronica" sequence="10"/>-->
+<!--      <menuitem id="menu_facturacion_elec" name="Facturacion Electronica" parent="facturacion_electronica" sequence="0"/>-->
+<!--      <menuitem name="menu_fac_elec" action="action_fc_pyp_settings_fc_view" id="sale_order_custom_document" parent="menu_facturacion_elec" sequence="0"/>-->
+
+<!--        <menuitem id="menu_custom_crm_visit_categ" name="Facturacion Electronica" parent="base.menu_custom" sequence="6"/>-->
+
+<!--        <menuitem id="menu_custom_crm_visit" name="Visitas" parent="menu_custom_crm_visit_categ" sequence="40"-->
+<!--                  action="action_fc_pyp_settings_fc_view"/>-->
+
+
+          <record id="view_invoice_tree" model="ir.ui.view">
+            <field name="name">account.invoice.tree</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_invoice_tree"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//tree" position="inside">
+                     <header>
+                     <button type="object" class="btn-primary" name="actulizarMasivoEstadoUCFE" string="Actualizar Estado Doc. Elec." />
+                    </header>
+                 </xpath>
+
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="cfe_serieNumero"/>
+                    <field name="tipoCFE" />
+                    <field name="talon_Fisico" optional="hide" invisible="context.get('default_move_type') in ('out_invoice', 'out_refund','out_receipt','entry')"/>
+                    <field name="matricula" optional="hide" invisible="context.get('default_move_type') in ('out_invoice', 'out_refund','out_receipt','entry')"/>
+                    <field name="km" optional="hide" invisible="context.get('default_move_type') in ('out_invoice', 'out_refund','out_receipt','entry')"/>
+                    </xpath>
+                  <xpath expr="//field[@name='state']" position="after">
+                    <field name="feEstado" widget="badge" 
+                    decoration-danger="feEstado in ('-1', '1')"
+                           decoration-warning="feEstado in ('11')"
+			          decoration-success="feEstado == '0'"
+                    />
+
+                  </xpath>
+            </field>
+        </record>
+
+
+          <record id="view_fc_pyp_fe_line_form" model="ir.ui.view">
+            <field name="name">view.fc_pyp.fe_line.form</field>
+            <field name="model">fc_pyp.fe_line</field>
+            <field name="arch" type="xml">
+                <form string="Información">
+                    <sheet>
+                        <group name="group_top">
+                            <group name="group_left">
+                                <field name="Number" readonly="1"  />
+                                <field name="Series" readonly="1"  />
+                                <field name="RtaCode" readonly="1"  />
+                                <field name="line_attachment_id" readonly="1"  />
+                                   <field name="Uuid" readonly="1"  />
+                                <field name="RtaMessage" readonly="1"  />
+                                <field name="xmlText" readonly="1"  />
+                            </group>
+<!--                            <group name="group_right" >
+                                <field name="Uuid" readonly="1"  />
+                                <field name="RtaMessage" readonly="1"  />
+                                <field name="xmlText" readonly="1"  />
+                            </group>-->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+            <record id="view_fc_pyp_fe_line_tree" model="ir.ui.view">
+            <field name="name">view.fc_pyp.fe_line.tree</field>
+            <field name="model">fc_pyp.fe_line</field>
+            <field name="arch" type="xml">
+                <tree string="Configuracion">
+                    <field name="create_date" readonly="1"  />
+                    <field name="Series" readonly="1"  />
+                    <field name="Number" readonly="1"  />
+                    <field name="RtaCode" readonly="1"  />
+                    <field name="Uuid" readonly="1"  />
+                </tree>
+            </field>
+          </record>
+
+            <record id="view_sales_order_form" model="ir.ui.view">
+           <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='amount_tax']" position="after">
+                    <field name="leyesSociales" />
+               </xpath>
+           </field>
+         </record>
+
+
+          <record id="view_account_move_reversal_form" model="ir.ui.view">
+           <field name="name">account.move.reversal.form</field>
+            <field name="model">account.move.reversal</field>
+            <field name="inherit_id" ref="account.view_account_move_reversal"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='refund_method']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+               </xpath>
+           </field>
+         </record>
+
+
+<!--      Pago / Resguardo-->
+          <record id="account_payment_form" model="ir.ui.view">
+            <field name="name">account.payment.form</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+                <field name="payment_method_id" position="replace">
+                    <field name="payment_method_id" attrs="{'invisible': True }"/>
+                </field>
+                 <xpath expr="//field[@name='partner_id']" position="after">
+
+                     <label for="tipoDoc_pay" string="Documento" />
+                     <div class="div_tipoDoc">
+                            <field name="tipoDoc_pay" readonly="1"/>
+                             <span> : </span>
+                            <field name="customerRUT_pay" readonly="1"/>
+                    </div>
+
+               </xpath>
+                 <xpath expr="//field[@name='partner_bank_id']" position="after">
+                     <field name="tipoCFE_pay" attrs="{'invisible': ['&amp;',('state', '!=', 'draft'),('Uuid_pay', '==', False)], 'readonly': [('Uuid_pay', '!=', False)]}"/>
+                     <field name="retenciones" attrs="{'invisible': [('tipoCFE_pay', '==', False)], 'readonly': [('Uuid_pay', '!=', False)], 'required': [('tipoCFE_pay', '!=', False)]}"/>
+                    <field name="Uuid_pay" attrs="{'invisible': [('Uuid_pay', '==', False)], 'readonly': [('Uuid_pay', '!=', False)]}"/>
+                    <field name="feEstado_pay" attrs="{'invisible': [('Uuid_pay', '==', False)], 'readonly': [('Uuid_pay', '!=', False)]}"/>
+                    <field name="cfe_serieNumero_pay" attrs="{'invisible': [('Uuid_pay', '==', False)], 'readonly': [('Uuid_pay', '!=', False)]}"/>
+
+                     <field name="isChequePago" attrs="{'invisible': [('isChequePago', '==', False)]}"/>
+                     <field name="referenciaPago" invisible = "True"/>
+                     <field name="fechaEmisionPago" invisible = "True"/>
+                     <field name="fechaVencimientoPago" invisible = "True"/>
+                     <field name="bancoPago_id" invisible = "True"/>
+                     <field name="estadoChequePago" invisible = "True"/>
+
+<!--                     <field name="referenciaPago" attrs="{'invisible': [('isChequePago', '==', False)], 'required': [('isChequePago', '==', True)]}" />-->
+<!--                     <field name="fechaEmisionPago" attrs="{'invisible': [('isChequePago', '==', False)],'required': [('isChequePago', '==', True)]}"/>-->
+<!--                     <field name="fechaVencimientoPago" attrs="{'invisible': [('isChequePago', '==', False)],'required': [('isChequePago', '==', True)]}"/>-->
+<!--                     <field name="bancoPago_id" attrs="{'invisible': [('isChequePago', '==', False)],'required': [('isChequePago', '==', True)]}"/>-->
+<!--                     <field name="estadoChequePago" attrs="{'invisible': [('isChequePago', '==', False)],'required': [('isChequePago', '==', True)]}"/>-->
+<!--                      <field name="amount_total"/>-->
+
+                 </xpath>
+               <xpath expr="//field[@name='ref']" position="after">
+                    <field name="descripcion" />
+                   <field name="observaciones" />
+                </xpath>
+                <xpath expr="//field[@name='move_id']" position="after">
+                    <field name="codigo_pay" readonly="1" force_save="1" />
+                </xpath>
+
+                <sheet>
+                <notebook>
+
+                            <page id="cheques_tab" string="Cheques" attrs="{'invisible': [('isChequePago', '==', False)]}">
+                                <field name="list_cheques_id" context="{'tree_view_ref' : 'fc_pyp.view_fc_pyp_fc_pago_cheque_relation_tree'}" attrs="{'readonly': [('state', '!=', 'draft')]}"/>/>
+                            </page>
+
+                    <page string="Documentos Electrónicos" attrs="{'invisible': [('Uuid_pay', '==', False)], 'readonly': [('Uuid_pay', '!=', False)]}">
+                        <group id="doc_elec_tab1_group">
+                         <group id="fac_elec_tab_group">
+                           <field name="Number_pay" readonly="1" />
+                           <field name="RtaMessage_pay" readonly="1"  />
+                           <field name="RtaCode_pay" readonly="1"/>
+                        </group>
+                       <group id="doc_elec_tab2_group">
+                         <field name="Series_pay" readonly="1" />
+                       </group>
+                       </group>
+                        <group id="doc_elec_tab3_group">
+                              <field name="cfe_emitidas_pay" readonly="1"/>
+                        </group>
+                    </page>
+                </notebook>
+              </sheet>
+            </field>
+        </record>
+
+         <record id="view_account_payment_tree" model="ir.ui.view">
+            <field name="name">account.payment.tree</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_tree"/>
+            <field name="arch" type="xml">
+                <field name="payment_method_id" position="replace">
+                    <field name="payment_method_id" attrs="{'column_invisible': True }"/>
+                </field>
+                  <xpath expr="//tree" position="inside">
+                     <header>
+                     <button type="object" class="btn-primary" name="actulizarMasivoEstadoPago" string="Actualizar Estado Doc. Elec." />
+                    </header>
+                 </xpath>
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="codigo_pay" />
+                    <field name="cfe_serieNumero_pay"/>
+                    <field name="tipoCFE_pay" />
+<!--                     <field name="referenciaPago" />-->
+<!--                     <field name="fechaEmisionPago" />-->
+<!--                     <field name="fechaVencimientoPago"/>-->
+<!--                    <field name="estadoChequePago" decoration-danger="estadoChequePago in ('0')"/>-->
+<!--                    <field name="bancoPago_id"/>-->
+                    </xpath>
+                  <xpath expr="//field[@name='state']" position="after">
+                    <field name="feEstado_pay" widget="badge"
+                    decoration-danger="feEstado_pay in ('-1', '1')"
+                           decoration-warning="feEstado_pay in ('11')"
+			          decoration-success="feEstado_pay == '0'"
+                    />
+                  </xpath>
+            </field>
+        </record>
+
+
+      <!--  Registrar Pago -->
+          <record id="account_payment_register_form" model="ir.ui.view">
+            <field name="name">account.payment.register.form</field>
+            <field name="model">account.payment.register</field>
+            <field name="inherit_id" ref="account.view_account_payment_register_form"/>
+            <field name="arch" type="xml">
+
+                 <xpath expr="//field[@name='partner_bank_id']" position="after">
+
+                   <field name="tipoCFE_w" />
+                   <field name="retenciones_w" attrs="{'invisible': [('tipoCFE_w', '==', False)], 'required': [('tipoCFE_w', '!=', False)]}"/>
+                     <field name="isCheque" readonly="1" attrs="{'invisible': [('isCheque', '==', False)]}"/>
+                     <field name="referencia" attrs="{'invisible': [('isCheque', '==', False)], 'required': [('isCheque', '==', True)]}" />
+                     <field name="fechaEmision" attrs="{'invisible': [('isCheque', '==', False)], 'required': [('isCheque', '==', True)]}"/>
+                     <field name="fechaVencimiento" attrs="{'invisible': [('isCheque', '==', False)], 'required': [('isCheque', '==', True)]}"/>
+                     <field name="banco_id" attrs="{'invisible': [('isCheque', '==', False)], 'required': [('isCheque', '==', True)]}"/>
+                     <field name="estadoCheque" attrs="{'invisible': [('isCheque', '==', False)], 'required': [('isCheque', '==', True)]}"/>
+
+               </xpath>
+<!--                <xpath expr="//group[@name='group3']" position="after">-->
+<!--                    <notebook>-->
+<!--                            <page id="cheques_tab" string="Cheques" attrs="{'invisible': [('isCheque', '==', False)]}">-->
+<!--                                <field name="list_cheq_id" />-->
+<!--                            </page>-->
+<!--                     </notebook>-->
+<!--                 </xpath>-->
+            </field>
+        </record>
+
+      <record id="account_journal_form" model="ir.ui.view">
+            <field name="name">account.journal.form</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='type']" position="after">
+                     <field name="cheques" />
+
+               </xpath>
+            </field>
+        </record>
+
+
+      <!-- Codigos -->
+            <record id="view_fc_pyp_fc_codigos_form" model="ir.ui.view">
+            <field name="name">view.fc_pyp.fc_codigos_form</field>
+            <field name="model">fc_pyp.fc_codigos</field>
+            <field name="arch" type="xml">
+                <form string="Información">
+                    <sheet>
+                        <group name="group_top_codigo">
+                                <field name="codigo" required="1"/>
+                                <field name="name" required="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+            <record id="view_fc_pyp_fc_codigos_tree" model="ir.ui.view">
+            <field name="name">view.fc_pyp.fc_codigos.tree</field>
+            <field name="model">fc_pyp.fc_codigos</field>
+            <field name="arch" type="xml">
+                <tree string="Configuracion">
+                    <field name="codigo"  />
+                    <field name="name"/>
+                 </tree>
+            </field>
+          </record>
+
+            <record id="action_fc_pyp_fc_codigos_view" model="ir.actions.act_window">
+            <field name="name">Config</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fc_pyp.fc_codigos</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Códigos CFE
+                </p>
+                <p>
+                    Click 'Nuevo' para añadir nuevos elementos
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_fc_pyp_fc_codigos" name="Códigos CFE" parent="menu_fc_pyp_settings_fc_categ" sequence="1"
+                  action="action_fc_pyp_fc_codigos_view"/>
+
+        <!-- Pago Cheques -->
+            <record id="view_fc_pyp_fc_pago_cheque_form" model="ir.ui.view">
+            <field name="name">view.fc_pyp.fc_pago_cheque_form</field>
+            <field name="model">fc_pyp.fc_pago_cheque</field>
+            <field name="arch" type="xml">
+                <form string="Información">
+                    <sheet>
+                        <group name="group_cheque_1">
+<!--                                 <field name="cheq_id" attrs="{'readonly': [('id', '!=', False)]}"/>-->
+                                <field name="referenciaPago" attrs="{'readonly': [('id', '!=', False)]}" required="1"/>
+                                <field name="fechaEmisionPago" attrs="{'readonly': [('id', '!=', False)]}" required="1"/>
+								 <field name="fechaVencimientoPago" attrs="{'readonly': [('id', '!=', False)]}" required="1"/>
+                        </group>
+                        <group name="group_cheque_2">
+                                <field name="bancoPago_id" attrs="{'readonly': [('id', '!=', False)]}" required="1"/>
+								 <field name="estadoChequePago" required="1"/>
+                                 <field name="valor"  widget="monetary" attrs="{'readonly': [('id', '!=', False)]}"/>
+                       </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+            <record id="view_fc_pyp_fc_pago_cheque_tree" model="ir.ui.view">
+            <field name="name">view.fc_pyp.fc_pago_cheque.tree</field>
+            <field name="model">fc_pyp.fc_pago_cheque</field>
+            <field name="arch" type="xml">
+                <tree string="Configuracion" delete="false" create="false">
+                               <field name="cheq_id"/>
+                               <field name="referenciaPago"/>
+                                <field name="fechaEmisionPago"/>
+								 <field name="fechaVencimientoPago"/>
+                                <field name="bancoPago_id"/>
+                                 <field name="estadoChequePago"
+                                        decoration-danger="estadoChequePago in ('2', '3')"
+                                        decoration-success="estadoChequePago in ('1')"
+                                        decoration-warning="estadoChequePago in ('0')"/>
+                                 <field name="valor" widget="monetary"/>
+                 </tree>
+            </field>
+          </record>
+
+          <record id="view_fc_pyp_fc_pago_cheque_relation_tree" model="ir.ui.view">
+            <field name="name">view.fc_pyp.fc_pago_cheque_relation.tree</field>
+            <field name="model">fc_pyp.fc_pago_cheque</field>
+            <field name="arch" type="xml">
+                <tree string="Configuracion">
+                    <field name="referenciaPago"/>
+                    <field name="fechaEmisionPago"/>
+                    <field name="fechaVencimientoPago"/>
+                    <field name="bancoPago_id"/>
+                    <field name="estadoChequePago"/>
+                    <field name="valor" widget="monetary"/>
+                 </tree>
+            </field>
+          </record>
+
+            <record id="action_fc_pyp_fc_pago_cheque_view" model="ir.actions.act_window">
+            <field name="name">Cheques</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fc_pyp.fc_pago_cheque</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Pago Cheques List
+                </p>
+                <p>
+                    Click 'Nuevo' para añadir nuevos elementos
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_fc_pyp_fc_pago_cheque" name="Cheques" parent="menu_fc_pyp_settings_fc_categ" sequence="1"
+                  action="action_fc_pyp_fc_pago_cheque_view"/>
+
+  </data>
+</odoo>

@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ajedrez_xrm_ajedrez_xrm,ajedrez_xrm.ajedrez_xrm,model_ajedrez_xrm_ajedrez_xrm,base.group_user,1,1,1,1

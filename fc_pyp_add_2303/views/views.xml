@@ -1,0 +1,47 @@
+<odoo>
+  <data>
+          <record id="view_fc_purcharse_form" model="ir.ui.view">
+            <field name="name">view.fc.purcharse.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+             <field name="arch" type="xml">
+                 <header>
+                   <field name="estado" widget="statusbar" statusbar_visible="draft,sent,pre_approved,to approve,purchase, done,cancel" readonly="1"/>
+                     <button type="object" name="action_confirmar" string="Confirmar Pedido" attrs="{'invisible': [('estado', 'not in', ['draft','sent'])]}"/>
+                    <button type="object" name="button_confirm" string="Pre-Aprobar" attrs="{'invisible': [('estado', 'not in', ['pre_approved'])]}"/>
+                 </header>
+
+                 <xpath expr="//form[1]/header[1]/button[@name='button_confirm'][3]" position="attributes">
+                        <attribute name="groups">__export__.res_groups_42_92c0e529</attribute>
+                 </xpath>
+
+               <xpath expr="//field[@name='partner_id']" position="after">
+                     <field name="state" invisible="1"/>
+                     <field name="preAprobador" invisible="1"/>
+                     <field name="aprobador" invisible="1"/>
+<!--                     <field name="dsn_amount_in_words"/>-->
+                </xpath>
+            </field>
+        </record>
+
+<!--  ///////////////////////////////////    -->
+
+      <record id="view_fc_payment_form" model="ir.ui.view">
+            <field name="name">view.fc.payment.form</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+             <field name="arch" type="xml">
+                 <header>
+                     <button type="object" name="action_numToText" string="Importe a Texto"/>
+                 </header>
+            </field>
+        </record>
+
+
+  </data>
+</odoo>
+
+
+
+
+

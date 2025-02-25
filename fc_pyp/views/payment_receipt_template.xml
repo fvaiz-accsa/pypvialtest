@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="template_report_payment_pyp">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <!-- Se optinen datos de las invoices -->
+                <t t-set="cant_inv_variable" t-value="0"/>
+                <t t-set="amount_inv_variable" t-value="0"/>
+                <t t-set="residual_inv_variable" t-value="0"/>
+                <p t-foreach="o.reconciled_invoice_ids" t-as="inv">
+                   <t t-set="cant_inv_variable" t-value="cant_inv_variable+1"/>
+                   <t t-set="amount_inv_variable" t-value="amount_inv_variable+inv.amount_total"/>
+                    <t t-set="residual_inv_variable" t-value="residual_inv_variable+inv.amount_residual"/>
+
+                </p>
+
+<!--<t t-call="web.external_layout">-->
+                <div class="header">
+                    <table style="width: 50%; border-collapse: collapse; float: left;" border="1">
+                        <tbody>
+                            <tr><td style="width: 100%;text-align: center;"><img t-att-src="image_data_uri(o.company_id.logo)"/></td></tr>
+                            <tr><td style="width: 100%;text-align: center;"></td></tr>
+                            <tr><td style="width: 100%;text-align: center;">P&amp;P Vial</td></tr>
+                            <tr><td style="width: 100%;text-align: center;">Ruta 9 km 139</td></tr>
+                            <tr><td style="width: 100%;text-align: center;">Maldonado, San Carlos</td></tr>
+                            <tr><td style="width: 100%;text-align: center;">Tel +598 4266 2744 / Cel +598 95 903 881</td></tr>
+                            <tr><td style="width: 100%;text-align: center;">administracion@pypvial.com</td></tr>
+                        </tbody>
+                    </table>
+                    <table style="height: 198px; width: 50%; float: right;" border="1">
+                        <tbody>
+                            <tr style="height: 18px;"><td style="width: 99.9999%; height: 18px; text-align: center;" colspan="2">COMPROBANTE NO FISCAL</td></tr>
+                            <tr style="height: 18px;"><td style="width: 45.2503%; height: 18px; text-align: center;background-color: #b6c1c1; border-style: solid; border-color: #b6c1c1;">RUT EMISOR</td>
+                                <td style="width: 54.7496%; height: 18px; text-align: center;background-color: #b6c1c1; border-style: solid; border-color: #b6c1c1;">TIPO DE DOCUMENTO</td></tr>
+                            <tr style="height: 18px;"><td style="width: 21.0708%; height: 18px; text-align: center; border-style: solid; border-color: #b6c1c1;" >100732340019</td>
+                                <td style="width: 54.7496%; height: 18px; text-align: center; border-style: solid; border-color: #b6c1c1;">Recibo de cobro</td></tr>
+                            <tr style="height: 18px;"><td style="width: 45.2503%; height: 18px; text-align: center; border-style: solid; border-color: #b6c1c1; background-color: #b6c1c1;" >SERIE Y NÚMERO</td>
+                                <td style="width: 54.7496%; height: 18px; text-align: center; border-style: solid; border-color: #b6c1c1; background-color: #b6c1c1;">MONEDA</td></tr>
+                            <tr  style="height: 18px;">
+                               <td style="width: 45.2503%; height: 18px; text-align: center;">
+                                    <span t-if="cant_inv_variable == 1" t-field="o.reconciled_invoice_ids.cfe_serieNumero"/>
+                               </td>
+                                <td style="width: 54.7496%; height: 18px; text-align: center;"><span t-field="o.currency_id"/></td>
+                            </tr>
+                            <tr style="height: 18px;"><td style="width: 21.0708%; height: 18px; text-align: center;background-color: #b6c1c1;" >DOC. RECEPTOR</td>
+                                <td style="width: 54.7496%; height: 18px; text-align: center;background-color: #b6c1c1;">FECHA</td>
+                            </tr><tr style="height: 18px;"><td style="width: 45.2503%; height: 18px; text-align: center;"><span t-field="o.customerRUT_pay"/></td>
+                            <td style="width: 54.7496%; height: 18px; text-align: center;"><span t-field="o.date"/></td>
+                        </tr><tr style="height: 18px;">
+                            <td style="width: 21.0708%; height: 18px; text-align: center; border-style: solid; border-color: #b6c1c1; background-color: #b6c1c1;" colspan="2">NOMBRE</td></tr>
+                            <tr style="height: 18px;"><td style="width: 21.0708%; height: 18px; text-align: center;" colspan="2"><span t-field="o.partner_id"/></td></tr>
+                            <tr style="height: 18px;"><td style="width: 21.0708%; height: 18px; text-align: center; border-style: solid; border-color: #b6c1c1; background-color: #b6c1c1;" colspan="2">DIRECCIÓN</td></tr>
+                            <tr style="height: 18px;"><td style="width: 21.0708%; height: 18px; text-align: center; border-style: solid; border-color: #b6c1c1;" colspan="2" border="1"><span t-field="o.partner_id.street"/></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="page" >
+                    <table style="height: auto; width: 100%; border-collapse: collapse;" border="1">
+                        <tbody>
+                            <tr style="height: 130px;"></tr>
+                            <tr style="height: 60px;">
+                                <td style="width: 100%; height: 80px; border-style: solid; border-color: #b6c1c1;"><span t-field="o.descripcion"/></td>
+                            </tr>
+                            <tr style="height: 25px;"></tr>
+                        </tbody>
+                    </table>
+                    <table style="width: 50%;float: left; border-collapse: collapse">
+                        <tbody>
+                            <tr><td style="width: 80%;text-align: left; background-color: #b6c1c1;" colspan="2"><h>TOTALES</h></td><td style="width: 20%;text-align: right;"></td></tr>
+<!--                               <span t-field="o.currency_id.symbol" /><h> </h><span t-esc="int(amount_inv_variable)" t-options='{"widget": "float", "precision": 2}'/>-->
+                            <tr>
+                                <td style="width: 80%;text-align: left;">Total</td>
+                                <td style="width: 40%;text-align: right;">
+                                    <span t-field="o.currency_id.symbol" /><h> </h><span t-esc="int(amount_inv_variable)" t-options='{"widget": "float", "precision": 2}'/>
+                            </td><td style="width: 20%;text-align: right;"></td>
+                            </tr>
+                            <tr><td style="width: 40%;text-align: left;">Total a cobrar</td><td style="width: 40%;text-align: right;"><span t-field="o.amount"/></td><td style="width: 20%;text-align: right;"></td></tr>
+                            <tr><td style="width: 40%;text-align: left;">Total a cuenta</td><td style="width: 40%;text-align: right;">
+
+                                  <span t-field="o.currency_id.symbol" /><h> </h><span t-esc="int(residual_inv_variable)" t-options='{"widget": "float", "precision": 2}'/>
+                            </td><td style="width: 20%;text-align: right;"></td></tr>
+                            <tr><td style="width: 40%;text-align: left;"></td><td style="width: 50%;text-align: right;"></td></tr>
+                        </tbody>
+                     </table>
+                    <table style="width: 50%;float: right; border-collapse: collapse">
+                        <tbody>
+                            <tr><td style="width: 80%;text-align: left; background-color: #b6c1c1;" colspan="2"><h>REFERENCIAS</h></td></tr>
+                             <tr><td style="width: 40%;text-align: left;">
+<!--                                 <span t-field="o.reconciled_invoice_ids.tipoCFE"/> -->
+<!--                                 <span t-field="o.reconciled_invoice_ids.cfe_serieNumero"/>-->
+                             </td><td style="width: 40%;text-align: right;">
+<!--                                 <span t-field="o.reconciled_invoice_ids.amount_total"/>-->
+                             </td></tr>
+                            <tr><td style="width: 40%;text-align: left;"></td><td style="width: 40%;text-align: right;"></td></tr>
+                            <tr><td style="width: 40%;text-align: left;"></td><td style="width: 40%;text-align: right;"></td></tr>
+                            <tr><td style="width: 40%;text-align: left;"></td><td style="width: 40%;text-align: right;"></td></tr>
+                        </tbody>
+                    </table>
+
+                    <table  style="width: 100%; border-collapse: collapse;"  name="pay_line">
+                        <thead>
+                           <tr style="height: 25px;"></tr>
+                        </thead>
+                        <tbody class="invoice_tbody" >
+                            <t t-if="o.list_cheques_id">
+                            <tr style="width: 100%;background-color: #b6c1c1;text-align: left;" >
+                                <td style="width: 40%;text-align: left; background-color: #b6c1c1;border-style: solid; border-color: #b6c1c1;" ><h>MEDIO DE PAGO</h></td>
+                                <td style="width: 20%;text-align: center; background-color: #b6c1c1;border-style: solid; border-color: #b6c1c1;" ><h>VENCIMIENTO</h></td>
+                                 <td style="width: 20%;text-align: center; background-color: #b6c1c1;border-style: solid; border-color: #b6c1c1;" ><h>MONEDA</h></td>
+                                 <td style="width: 20%;text-align: right; background-color: #b6c1c1;border-style: solid; border-color: #b6c1c1;" ><h>MONTO</h></td>
+<!--                                <th name="th_pay_method" tyle="text-align: left;"><span>MEDIO DE PAGO</span></th>-->
+<!--                                <th name="th_currency" tyle="text-align: center;"><span>MONEDA</span></th>-->
+<!--                                <th name="th_amount" tyle="text-align: right;"><span>MONTO</span></th>-->
+                             </tr>
+                             </t>
+                                <t t-set="i" t-value="1"/>
+                                <tr t-foreach="o.list_cheques_id" t-as="cheque">
+                                    <td style="width: 40%;text-align: left;">
+                                       Cheque - <span t-field="cheque.bancoPago_id" /> - <span t-field="cheque.referenciaPago" />
+                                    </td>
+                                     <td style="width: 20%;text-align: center;">
+                                        <span t-field="cheque.fechaVencimientoPago" />
+                                    </td>
+                                    <td style="width: 20%;text-align: center;">
+                                        <span t-field="o.currency_id" />
+                                    </td>
+                                    <td style="width: 20%;text-align: right;">
+                                        <span t-field="cheque.valor" />
+                                    </td>
+                                </tr>
+<!--                                <tr t-foreach="o.list_cheques_id" t-as="l">-->
+<!--                                <td> <span t-esc="i"/> </td>-->
+<!--                                    <t t-set="i" t-value="i+1"/>-->
+<!--                                </tr>-->
+                        </tbody>
+                    </table>
+
+                    <table style="height: 46px; width: 100%; border-collapse: collapse;" border="1">
+                        <tr style="height: 25px;"></tr>
+                        <tbody>
+                            <tr><td style="width: 100%;text-align: left; background-color: #b6c1c1;border-style: solid; border-color: #b6c1c1;" ><h>OBSERVACIONES</h></td></tr>
+                            <tr style="height: 70px;">
+                                <td style="width: 100%; height: 100px; border-style: solid; border-color: #b6c1c1;"><span t-field="o.observaciones"/></td>
+                            </tr>
+                            <tr style="height: 25px;"></tr>
+                        </tbody>
+                    </table>
+
+                    </div>
+
+           </t>
+        </t>
+    </template>
+</odoo>
