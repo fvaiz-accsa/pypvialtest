@@ -1,4 +1,4 @@
 [submodule "ACC-SA/l10n_uy"]
 	path = ACC-SA/l10n_uy
 	url = git@github.com:ACC-SA/l10n_uy.git
-	branch = 17.0
+	branch = 17.0_pyp
