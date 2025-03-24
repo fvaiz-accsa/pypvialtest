@@ -2,3 +2,8 @@
 	path = ACC-SA/l10n_uy
 	url = git@github.com:ACC-SA/l10n_uy.git
 	branch = 17.0_pyp
+
+[submodule "ACC-SA/l10nuy_bimoneda"]
+	path = ACC-SA/l10nuy_bimoneda
+	url = git@github.com:ACC-SA/l10nuy_bimoneda.git
+	branch = 17.0
