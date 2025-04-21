@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # from odoo import http
 
-
+#testing
 # class FcPyp(http.Controller):
 #     @http.route('/fc_pyp/fc_pyp/', auth='public')
 #     def index(self, **kw):
@@ -19,3 +19,5 @@
 #         return http.request.render('fc_pyp.object', {
 #             'object': obj
 #         })
+
+
