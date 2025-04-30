@@ -1,0 +1,471 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* imprimex_req
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e-20240902\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-27 18:54+0000\n"
+"PO-Revision-Date: 2025-02-27 13:01-0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_UY\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.5\n"
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_account_bank_statement_line__commission
+#: model:ir.model.fields,field_description:imprimex_req.field_account_move__commission
+#: model:ir.model.fields,field_description:imprimex_req.field_account_payment__commission
+#: model_terms:ir.ui.view,arch_db:imprimex_req.view_imprimex_account_move_filter
+msgid "% Commission"
+msgstr "% Comisión"
+
+#. module: imprimex_req
+#: model:ir.model.fields.selection,name:imprimex_req.selection__account_move__commission_agency__10
+#: model:ir.model.fields.selection,name:imprimex_req.selection__sale_order__commission_agency__10
+msgid "10%"
+msgstr ""
+
+#. module: imprimex_req
+#: model:ir.model.fields.selection,name:imprimex_req.selection__account_move__commission_agency__15
+#: model:ir.model.fields.selection,name:imprimex_req.selection__sale_order__commission_agency__15
+msgid "15%"
+msgstr ""
+
+#. module: imprimex_req
+#: model:ir.model.fields.selection,name:imprimex_req.selection__account_move__commission_agency__20
+#: model:ir.model.fields.selection,name:imprimex_req.selection__sale_order__commission_agency__20
+msgid "20%"
+msgstr ""
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_product_product__error_update
+msgid "Actualización en Palmart"
+msgstr ""
+
+#. module: imprimex_req
+#: model:ir.actions.server,name:imprimex_req.update_stock
+#: model_terms:ir.ui.view,arch_db:imprimex_req.view_imprimex_product_procurement_button_form
+msgid "Actualizar stock en palmart"
+msgstr ""
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_account_bank_statement_line__commission_agency
+#: model:ir.model.fields,field_description:imprimex_req.field_account_move__commission_agency
+#: model:ir.model.fields,field_description:imprimex_req.field_account_payment__commission_agency
+#: model:ir.model.fields,field_description:imprimex_req.field_sale_order__commission_agency
+msgid "Agency Commission"
+msgstr "Comisión de la Agencia"
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_account_bank_statement_line__name_agency
+#: model:ir.model.fields,field_description:imprimex_req.field_account_move__name_agency
+#: model:ir.model.fields,field_description:imprimex_req.field_account_payment__name_agency
+#: model:ir.model.fields,field_description:imprimex_req.field_sale_order__name_agency
+#: model_terms:ir.ui.view,arch_db:imprimex_req.view_imprimex_account_move_filter
+msgid "Agency Name"
+msgstr "Nombre de la agencia"
+
+#. module: imprimex_req
+#: model_terms:ir.ui.view,arch_db:imprimex_req.view_imprimex_order_form
+msgid "CONFIRMAR"
+msgstr ""
+
+#. module: imprimex_req
+#: model_terms:ir.ui.view,arch_db:imprimex_req.view_imprimex_order_form
+msgid "Cancelar"
+msgstr ""
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_commission__code
+msgid "Code"
+msgstr "Código"
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_sale_order__commission
+msgid "Commission %"
+msgstr "Comisión %"
+
+#. module: imprimex_req
+#: model_terms:ir.ui.view,arch_db:imprimex_req.view_imprimex_account_move_filter
+msgid "Commission Agency"
+msgstr "Agencia de la Comisión"
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_account_bank_statement_line__commissioners
+#: model:ir.model.fields,field_description:imprimex_req.field_account_move__commissioners
+#: model:ir.model.fields,field_description:imprimex_req.field_account_payment__commissioners
+msgid "Commissioned"
+msgstr "Oficial"
+
+#. module: imprimex_req
+#: model_terms:ir.ui.view,arch_db:imprimex_req.view_imprimex_account_move_filter
+msgid "Commissioners"
+msgstr "Notario"
+
+#. module: imprimex_req
+#: model:ir.actions.act_window,name:imprimex_req.commission_action
+#: model:ir.model,name:imprimex_req.model_commission
+#: model:ir.ui.menu,name:imprimex_req.commission_menu
+#: model_terms:ir.ui.view,arch_db:imprimex_req.commission_form
+#: model_terms:ir.ui.view,arch_db:imprimex_req.commission_tree
+msgid "Commissions"
+msgstr "Comisiones"
+
+#. module: imprimex_req
+#: model:ir.model,name:imprimex_req.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_commission__create_uid
+#: model:ir.model.fields,field_description:imprimex_req.field_immediate_transfer_next__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_commission__create_date
+#: model:ir.model.fields,field_description:imprimex_req.field_immediate_transfer_next__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: imprimex_req
+#: model:ir.model,name:imprimex_req.model_res_currency
+msgid "Currency"
+msgstr "Divisa"
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_commission__description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_commission__display_name
+#: model:ir.model.fields,field_description:imprimex_req.field_immediate_transfer_next__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: imprimex_req
+#: model_terms:ir.ui.view,arch_db:imprimex_req.view_imprimex_order_form
+msgid "ENVIAR POR CORREO ELECTRÓNICO"
+msgstr ""
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_stock_picking_type__is_low_factory
+msgid "Es bajas de fábrica"
+msgstr ""
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_commission__id
+#: model:ir.model.fields,field_description:imprimex_req.field_immediate_transfer_next__id
+msgid "ID"
+msgstr ""
+
+#. module: imprimex_req
+#: model_terms:ir.ui.view,arch_db:imprimex_req.view_imprimex_users_form
+msgid "ID comercial palmart"
+msgstr ""
+
+#. module: imprimex_req
+#: model_terms:ir.ui.view,arch_db:imprimex_req.view_imprimex_product_template_form
+msgid "ID tipo de trabajo palmart"
+msgstr ""
+
+#. module: imprimex_req
+#: model:ir.model,name:imprimex_req.model_immediate_transfer_next
+msgid "Immediate Transfer Next"
+msgstr "Transferencia inmediata siguiente"
+
+#. module: imprimex_req
+#. odoo-python
+#: code:addons/imprimex_req/models/stock_picking.py:0
+#, python-format
+msgid "Immediate Transfer?"
+msgstr "¿Transferencia inmediata?"
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_res_partner__is_customer
+#: model:ir.model.fields,field_description:imprimex_req.field_res_users__is_customer
+msgid "Is Customer"
+msgstr "Es cliente"
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_res_partner__is_supplier
+#: model:ir.model.fields,field_description:imprimex_req.field_res_users__is_supplier
+msgid "Is Supplier"
+msgstr "Es proveedor"
+
+#. module: imprimex_req
+#: model:ir.model,name:imprimex_req.model_account_journal
+msgid "Journal"
+msgstr "Diario"
+
+#. module: imprimex_req
+#: model:ir.model,name:imprimex_req.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento contable"
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_commission__write_uid
+#: model:ir.model.fields,field_description:imprimex_req.field_immediate_transfer_next__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_commission__write_date
+#: model:ir.model.fields,field_description:imprimex_req.field_immediate_transfer_next__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: imprimex_req
+#: model:ir.model,name:imprimex_req.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "Lead/oportunidad"
+
+#. module: imprimex_req
+#: model:ir.actions.server,name:imprimex_req.view_imprimex_account_move_action_server
+msgid "Mark Commissioners"
+msgstr "Comisionados de marca"
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_account_tax__code_memory
+msgid "Memory Code"
+msgstr "Código de memoria"
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_immediate_transfer_next__message
+msgid "Message"
+msgstr ""
+
+#. module: imprimex_req
+#: model:ir.model,name:imprimex_req.model_mail_notification
+msgid "Message Notifications"
+msgstr "Notificaciones de mensajes"
+
+#. module: imprimex_req
+#. odoo-python
+#: code:addons/imprimex_req/models/crm_lead.py:0
+#, python-format
+msgid "Nuevo"
+msgstr ""
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_crm_lead__number_opportunity
+#: model_terms:ir.ui.view,arch_db:imprimex_req.view_imprimex_crm_case_opportunities_filter
+msgid "N° de oportunidad"
+msgstr ""
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_account_bank_statement_line__id_ot
+#: model:ir.model.fields,field_description:imprimex_req.field_account_move__id_ot
+#: model:ir.model.fields,field_description:imprimex_req.field_account_payment__id_ot
+#: model:ir.model.fields,field_description:imprimex_req.field_sale_order__id_ot
+#: model_terms:ir.ui.view,arch_db:imprimex_req.view_imprimex_account_move_filter
+msgid "OT Number"
+msgstr "Número OT"
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_sale_order__state_ot
+msgid "OT Status"
+msgstr "Estado OT"
+
+#. module: imprimex_req
+#: model:ir.model.fields.selection,name:imprimex_req.selection__account_move__commission_agency__otro
+#: model:ir.model.fields.selection,name:imprimex_req.selection__sale_order__commission_agency__other
+msgid "Other"
+msgstr "Otro"
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_res_users__id_commercial_palmart
+msgid "PalmART Commercial ID"
+msgstr "Identificación comercial de PalmART"
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_res_currency__id_currency_palmart
+msgid "PalmART Currency ID"
+msgstr "Identificación de moneda de PalmART"
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_product_product__id_type_work_palmart
+#: model:ir.model.fields,field_description:imprimex_req.field_product_template__id_type_work_palmart
+msgid "PalmART Work Type ID"
+msgstr "Identificación del tipo de trabajo de PalmART"
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_res_partner__number_customer
+#: model:ir.model.fields,field_description:imprimex_req.field_res_users__number_customer
+msgid "Palmart Customer Number"
+msgstr "Número de cliente de Palmart"
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_sale_order__id_order_palmart
+msgid "Palmart Quotation Number"
+msgstr "Número de cotización de Palmart"
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_account_tax__id_tax_palmart
+msgid "Palmart Tax ID"
+msgstr "Identificación fiscal de Palmart"
+
+#. module: imprimex_req
+#: model:ir.model,name:imprimex_req.model_stock_picking_type
+msgid "Picking Type"
+msgstr "Tipo de recolección"
+
+#. module: imprimex_req
+#. odoo-python
+#: code:addons/imprimex_req/models/stock_picking.py:0
+#, python-format
+msgid "Please add some items to move."
+msgstr "Agregue algunos elementos para mover."
+
+#. module: imprimex_req
+#: model:ir.model,name:imprimex_req.model_product_template
+#: model:ir.model.fields,field_description:imprimex_req.field_mail_notification__product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: imprimex_req
+#: model:ir.model,name:imprimex_req.model_product_product
+msgid "Product Variant"
+msgstr "Variante del producto"
+
+#. module: imprimex_req
+#: model_terms:ir.ui.view,arch_db:imprimex_req.view_imprimex_move_form
+msgid "Publish"
+msgstr "Publicar"
+
+#. module: imprimex_req
+#: model:ir.model,name:imprimex_req.model_stock_quant
+msgid "Quants"
+msgstr "Cantidad"
+
+#. module: imprimex_req
+#: model:ir.model.fields.selection,name:imprimex_req.selection__sale_order__state__rejected
+msgid "Rejected"
+msgstr "Rechazado"
+
+#. module: imprimex_req
+#: model:ir.model,name:imprimex_req.model_sale_advance_payment_inv
+msgid "Sales Advance Payment Invoice"
+msgstr "Factura de anticipo de ventas"
+
+#. module: imprimex_req
+#: model:ir.model,name:imprimex_req.model_sale_order
+msgid "Sales Order"
+msgstr "Orden de venta"
+
+#. module: imprimex_req
+#: model_terms:ir.ui.view,arch_db:imprimex_req.view_imprimex_order_form
+msgid "Se debe completar el campo Oportunidad."
+msgstr ""
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_sale_order__show_btn_cancel
+msgid "Show Cancel"
+msgstr "Mostrar Cancelados"
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_sale_order__show_msg
+msgid "Show Message"
+msgstr ""
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_sale_order__show_btn_email
+msgid "Show Send by Email"
+msgstr "Mostrar Enviar por correo electrónico"
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_sale_order__state
+msgid "Status"
+msgstr "Estado"
+
+#. module: imprimex_req
+#: model:ir.model.fields,field_description:imprimex_req.field_immediate_transfer_next__picking_id
+msgid "Stock Movement"
+msgstr "Movimiento de inventario"
+
+#. module: imprimex_req
+#: model:ir.model,name:imprimex_req.model_stock_track_confirmation
+msgid "Stock Track Confirmation"
+msgstr "Confirmación de seguimiento de existencias"
+
+#. module: imprimex_req
+#: model:ir.model,name:imprimex_req.model_account_tax
+#: model:ir.model.fields,field_description:imprimex_req.field_account_journal__tax_id
+msgid "Tax"
+msgstr "Impuesto"
+
+#. module: imprimex_req
+#: model:ir.model.constraint,message:imprimex_req.constraint_res_users_unique_id_commercial_palmart
+msgid "The 'PalmART Commercial ID' must be unique."
+msgstr "El 'ID comercial PalmART' debe ser único."
+
+#. module: imprimex_req
+#: model:ir.model.constraint,message:imprimex_req.constraint_res_currency_unique_id_currency_palmart
+msgid "The 'PalmART Currency ID' must be unique."
+msgstr "El 'ID de moneda PalmART' debe ser único."
+
+#. module: imprimex_req
+#: model:ir.model.constraint,message:imprimex_req.constraint_product_template_unique_id_type_work_palmart
+msgid "The 'PalmART Work Type ID' must be unique."
+msgstr "El 'ID de tipo de trabajo PalmART' debe ser único."
+
+#. module: imprimex_req
+#: model:ir.model.constraint,message:imprimex_req.constraint_account_tax_id_tax_palmart
+msgid "The Palmart Tax ID must be unique."
+msgstr "El número de identificación fiscal de Palmart debe ser único."
+
+#. module: imprimex_req
+#. odoo-python
+#: code:addons/imprimex_req/models/account_move.py:0
+#, python-format
+msgid "The tax \"%s\" must use the journal \"%s\" but \"%s\" is being used"
+msgstr ""
+"El impuesto \"%s\" debe utilizar el diario \"%s\" pero se está "
+"utilizando \"%s\""
+
+#. module: imprimex_req
+#: model:ir.model.fields,help:imprimex_req.field_res_users__id_commercial_palmart
+msgid "Unique identifier for the PalmART commercial user."
+msgstr "Identificador único para el uso comercial de PalmART"
+
+#. module: imprimex_req
+#: model:ir.model.fields,help:imprimex_req.field_res_currency__id_currency_palmart
+msgid "Unique identifier for the PalmART currency."
+msgstr "Identificador único para la moneda PalmART."
+
+#. module: imprimex_req
+#: model:ir.model.fields,help:imprimex_req.field_product_product__id_type_work_palmart
+#: model:ir.model.fields,help:imprimex_req.field_product_template__id_type_work_palmart
+msgid "Unique identifier for the PalmART work type."
+msgstr ""
+
+#. module: imprimex_req
+#: model:ir.model,name:imprimex_req.model_res_users
+msgid "User"
+msgstr "Usuario"
+
+#. module: imprimex_req
+#. odoo-python
+#: code:addons/imprimex_req/models/stock_picking.py:0
+#, python-format
+msgid ""
+"You cannot validate a transfer if no quantites are reserved nor done. To "
+"force the transfer, switch in edit more and encode the done quantities."
+msgstr ""
+"No se puede validar una transferencia si no hay cantidades reservadas ni "
+"realizadas. Para forzar la transferencia, cambie a editar más y "
+"codifique las cantidades realizadas."
+
+#. module: imprimex_req
+#. odoo-python
+#: code:addons/imprimex_req/models/stock_picking.py:0
+#, python-format
+msgid "You need to supply a Lot/Serial number for product %s."
+msgstr "Debe proporcionar un número de lote/serie para el producto %s."
